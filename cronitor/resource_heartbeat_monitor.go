@@ -17,10 +17,6 @@ func resourceMonitor() *schema.Resource {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"type": &schema.Schema{
-				Type:     schema.TypeString,
-				Required: true,
-			},
 			"notifications": &schema.Schema{
 				Type:     schema.TypeList,
 				Required: true,
@@ -103,6 +99,17 @@ func resourceMonitor() *schema.Resource {
 						},
 					},
 				},
+			},
+			"tags": &schema.Schema{
+				Type:     schema.TypeList,
+				Optional: true,
+				Elem: &schema.Schema{
+					Type: schema.TypeString,
+				},
+			},
+			"note": &schema.Schema{
+				Type:     schema.TypeString,
+				Optional: true,
 			},
 		},
 	}
