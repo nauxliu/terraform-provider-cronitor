@@ -9,7 +9,7 @@
 
 ## Example
 
-```
+```HCL
 provider "cronitor" {
   api_key = "{your api key}"
 }
