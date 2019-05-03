@@ -24,7 +24,7 @@ type Notifications struct {
 
 type Rule struct {
 	RuleType             string `json:"rule_type"`
-	Value                string `json:"value"`
+	Value                string `json:"value,omitempty"`
 	TimeUnit             string `json:"time_unit,omitempty"`
 	HoursToFollowupAlert int    `json:"hours_to_followup_alert,omitempty"`
 	GraceSeconds         int    `json:"grace_seconds,omitempty"`
@@ -75,9 +75,9 @@ func (this Monitor) createFromResourceData(d *schema.ResourceData) (Monitor, err
 	}
 
 	if attr, ok := d.GetOk("rule"); ok {
-		attrRules := attr.([]interface{})
+		attrRules := attr.(*schema.Set)
 
-		for _, v := range attrRules {
+		for _, v := range attrRules.List() {
 			rule := v.(map[string]interface{})
 			monitor.Rules = append(monitor.Rules, Rule{
 				RuleType:             rule["rule_type"].(string),

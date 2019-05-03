@@ -2,20 +2,25 @@ package cronitor
 
 import (
 	"bytes"
-	"encoding/json"
 	"fmt"
+	jsoniter "github.com/json-iterator/go"
 	"io/ioutil"
 	"net/http"
+	"github.com/json-iterator/go/extra"
 )
 
 const apiEndpoint = "https://cronitor.io/v3"
+
+func init() {
+	extra.RegisterFuzzyDecoders()
+}
 
 type Client struct {
 	secretKey string
 }
 
 func (c Client) create(m Monitor) (code *string, err error) {
-	b, err := json.Marshal(m)
+	b, err := jsoniter.Marshal(m)
 
 	if err != nil {
 		return nil, err
@@ -42,7 +47,7 @@ func (c Client) create(m Monitor) (code *string, err error) {
 
 	createdMonitor := Monitor{}
 
-	if err := json.Unmarshal(body, &createdMonitor); err != nil {
+	if err := jsoniter.Unmarshal(body, &createdMonitor); err != nil {
 		return nil, err
 	}
 
@@ -50,7 +55,7 @@ func (c Client) create(m Monitor) (code *string, err error) {
 }
 
 func (c Client) update(code string, m Monitor) error {
-	b, err := json.Marshal(m)
+	b, err := jsoniter.Marshal(m)
 
 	if err != nil {
 		return err
@@ -88,15 +93,15 @@ func (c Client) read(code string) (*Monitor, error) {
 		return nil, err
 	}
 
+	body, _ := ioutil.ReadAll(resp.Body)
+
 	if resp.StatusCode != 200 {
-		body, _ := ioutil.ReadAll(resp.Body)
 		return nil, fmt.Errorf("failed to read monitor, status code: %d, body: %s", resp.StatusCode, body)
 	}
 
 	monitor := Monitor{}
-	body, _ := ioutil.ReadAll(resp.Body)
 
-	if err := json.Unmarshal(body, &monitor); err != nil {
+	if err := jsoniter.Unmarshal(body, &monitor); err != nil {
 		return nil, err
 	}
 

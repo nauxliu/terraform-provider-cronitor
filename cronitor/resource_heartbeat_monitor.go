@@ -28,7 +28,7 @@ func resourceMonitor() *schema.Resource {
 			},
 			"notifications": &schema.Schema{
 				Type:     schema.TypeList,
-				Optional: true,
+				Required: true,
 				MaxItems: 1,
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
@@ -71,7 +71,7 @@ func resourceMonitor() *schema.Resource {
 				},
 			},
 			"rule": &schema.Schema{
-				Type:     schema.TypeList,
+				Type:     schema.TypeSet,
 				Required: true,
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
@@ -91,7 +91,7 @@ func resourceMonitor() *schema.Resource {
 						},
 						"value": &schema.Schema{
 							Type:     schema.TypeString,
-							Required: true,
+							Optional: true,
 						},
 						"time_unit": &schema.Schema{
 							Type:     schema.TypeString,
