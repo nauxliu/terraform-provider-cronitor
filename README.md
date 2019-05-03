@@ -19,13 +19,25 @@ resource "cronitor_heartbeat_monitor" "example" {
 
     notifications = {
         webhooks = ["https://webhook.url"]
+        slack = ["https://slack.incoming.webhook.url"]
     }
 
     rule = {
         value = "* * * * * *"
+        grace_seconds = 30
+    }
+    
+    rule = {
+        rule_type = "run_ping_not_received"
+    }
+    
+    rule = {
+        rule_type = "ran_less_than"
+        time_unit = "minutes"
+        value = 10
     }
 
-    tags = ["fo", "bar"]
+    tags = ["foo", "bar"]
 
     note = "heartbeat monitor"
 }
