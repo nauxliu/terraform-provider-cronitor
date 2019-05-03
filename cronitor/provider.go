@@ -7,7 +7,7 @@ import (
 func Provider() *schema.Provider {
 	return &schema.Provider{
 		Schema: map[string]*schema.Schema{
-			"secret_key": {
+			"api_key": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
@@ -20,5 +20,7 @@ func Provider() *schema.Provider {
 }
 
 func providerConfigure(d *schema.ResourceData) (interface{}, error) {
-	return d.Get("secret_key"), nil
+	client := Client{secretKey: d.Get("api_key").(string)}
+
+	return client, nil
 }
