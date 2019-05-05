@@ -1,3 +1,5 @@
+.idea
+
 .terraform
 .vscode
 terraform-provider-cronitor
