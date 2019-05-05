@@ -20,6 +20,7 @@ type Notifications struct {
 	Emails    []string `json:"emails,omitempty"`
 	Pagerduty []string `json:"pagerduty,omitempty"`
 	Slack     []string `json:"slack,omitempty"`
+	Templates []string `json:"templates,omitempty"`
 }
 
 type Rule struct {
@@ -72,6 +73,10 @@ func (this Monitor) createFromResourceData(d *schema.ResourceData) (Monitor, err
 		if attr, ok := d.GetOk("notifications.0.webhooks"); ok {
 			monitor.Notifications.Webhooks = this.convertInterfacesToStrings(attr.([]interface{}))
 		}
+
+		if attr, ok := d.GetOk("notifications.0.templates"); ok {
+			monitor.Notifications.Templates = this.convertInterfacesToStrings(attr.([]interface{}))
+		}
 	}
 
 	if attr, ok := d.GetOk("rule"); ok {
@@ -100,6 +105,7 @@ func (this Monitor) getNotificationsMapping() []interface{} {
 	n["pagerduty"] = this.Notifications.Pagerduty
 	n["phones"] = this.Notifications.Phones
 	n["webhooks"] = this.Notifications.Webhooks
+	n["templates"] = this.Notifications.Templates
 
 	return []interface{}{n}
 }

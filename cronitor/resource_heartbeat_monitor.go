@@ -46,6 +46,13 @@ func resourceMonitor() *schema.Resource {
 								Type: schema.TypeString,
 							},
 						},
+						"templates": &schema.Schema{
+							Type:     schema.TypeList,
+							Optional: true,
+							Elem: &schema.Schema{
+								Type: schema.TypeString,
+							},
+						},
 						"phones": &schema.Schema{
 							Type:     schema.TypeList,
 							Optional: true,

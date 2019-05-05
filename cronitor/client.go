@@ -4,9 +4,9 @@ import (
 	"bytes"
 	"fmt"
 	jsoniter "github.com/json-iterator/go"
+	"github.com/json-iterator/go/extra"
 	"io/ioutil"
 	"net/http"
-	"github.com/json-iterator/go/extra"
 )
 
 const apiEndpoint = "https://cronitor.io/v3"
