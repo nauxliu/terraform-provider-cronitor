@@ -134,6 +134,7 @@ func resourceMonitor() *schema.Resource {
 			"note": &schema.Schema{
 				Type:     schema.TypeString,
 				Optional: true,
+				Default:  "",
 			},
 		},
 	}

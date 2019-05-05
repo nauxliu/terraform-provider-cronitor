@@ -11,7 +11,7 @@ type Monitor struct {
 	Tags          []string      `json:"tags,omitempty"`
 	Notifications Notifications `json:"notifications"`
 	Rules         []Rule        `json:"rules"`
-	Note          string        `json:"note,omitempty"`
+	Note          string        `json:"note"`
 }
 
 type Notifications struct {
