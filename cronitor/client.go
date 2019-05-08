@@ -16,7 +16,7 @@ func init() {
 }
 
 type Client struct {
-	SecretKey string
+	ApiKey string
 }
 
 func (c Client) Create(m Monitor) (code *string, err error) {
@@ -31,7 +31,7 @@ func (c Client) Create(m Monitor) (code *string, err error) {
 	req, _ := http.NewRequest("POST", apiEndpoint+"/monitors", buf)
 
 	req.Header.Set("Content-Type", "application/json")
-	req.SetBasicAuth(c.SecretKey, "")
+	req.SetBasicAuth(c.ApiKey, "")
 
 	resp, err := http.DefaultClient.Do(req)
 
@@ -66,7 +66,7 @@ func (c Client) Update(code string, m Monitor) error {
 	req, _ := http.NewRequest("PUT", apiEndpoint+"/monitors/"+code, buf)
 
 	req.Header.Set("Content-Type", "application/json")
-	req.SetBasicAuth(c.SecretKey, "")
+	req.SetBasicAuth(c.ApiKey, "")
 
 	resp, err := http.DefaultClient.Do(req)
 
@@ -85,7 +85,7 @@ func (c Client) Update(code string, m Monitor) error {
 func (c Client) Read(code string) (*Monitor, error) {
 	req, _ := http.NewRequest("GET", apiEndpoint+"/monitors/"+code, nil)
 
-	req.SetBasicAuth(c.SecretKey, "")
+	req.SetBasicAuth(c.ApiKey, "")
 
 	resp, err := http.DefaultClient.Do(req)
 
@@ -111,7 +111,7 @@ func (c Client) Read(code string) (*Monitor, error) {
 func (c Client) Delete(code string) error {
 	req, _ := http.NewRequest("DELETE", apiEndpoint+"/monitors/"+code, nil)
 
-	req.SetBasicAuth(c.SecretKey, "")
+	req.SetBasicAuth(c.ApiKey, "")
 
 	resp, err := http.DefaultClient.Do(req)
 
