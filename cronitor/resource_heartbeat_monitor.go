@@ -151,7 +151,7 @@ func resourceHeartbeatMonitorCreate(d *schema.ResourceData, m interface{}) error
 
 	monitor.Type = "heartbeat"
 
-	code, err := client.create(monitor)
+	code, err := client.Create(monitor)
 
 	if err != nil {
 		return err
@@ -165,7 +165,7 @@ func resourceHeartbeatMonitorCreate(d *schema.ResourceData, m interface{}) error
 func resourceHeartbeatMonitorRead(d *schema.ResourceData, m interface{}) error {
 	client := m.(Client)
 
-	monitor, err := client.read(d.Id())
+	monitor, err := client.Read(d.Id())
 
 	if err != nil {
 		return err
@@ -205,7 +205,7 @@ func resourceHeartbeatMonitorUpdate(d *schema.ResourceData, m interface{}) error
 
 	monitor.Type = "heartbeat"
 
-	if err := client.update(d.Id(), monitor); err != nil {
+	if err := client.Update(d.Id(), monitor); err != nil {
 		return err
 	}
 
@@ -215,5 +215,5 @@ func resourceHeartbeatMonitorUpdate(d *schema.ResourceData, m interface{}) error
 func resourceHeartbeatMonitorDelete(d *schema.ResourceData, m interface{}) error {
 	client := m.(Client)
 
-	return client.delete(d.Id())
+	return client.Delete(d.Id())
 }

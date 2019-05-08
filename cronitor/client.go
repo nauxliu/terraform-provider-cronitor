@@ -16,10 +16,10 @@ func init() {
 }
 
 type Client struct {
-	secretKey string
+	SecretKey string
 }
 
-func (c Client) create(m Monitor) (code *string, err error) {
+func (c Client) Create(m Monitor) (code *string, err error) {
 	b, err := jsoniter.Marshal(m)
 
 	if err != nil {
@@ -31,7 +31,7 @@ func (c Client) create(m Monitor) (code *string, err error) {
 	req, _ := http.NewRequest("POST", apiEndpoint+"/monitors", buf)
 
 	req.Header.Set("Content-Type", "application/json")
-	req.SetBasicAuth(c.secretKey, "")
+	req.SetBasicAuth(c.SecretKey, "")
 
 	resp, err := http.DefaultClient.Do(req)
 
@@ -54,7 +54,7 @@ func (c Client) create(m Monitor) (code *string, err error) {
 	return &createdMonitor.Code, nil
 }
 
-func (c Client) update(code string, m Monitor) error {
+func (c Client) Update(code string, m Monitor) error {
 	b, err := jsoniter.Marshal(m)
 
 	if err != nil {
@@ -66,7 +66,7 @@ func (c Client) update(code string, m Monitor) error {
 	req, _ := http.NewRequest("PUT", apiEndpoint+"/monitors/"+code, buf)
 
 	req.Header.Set("Content-Type", "application/json")
-	req.SetBasicAuth(c.secretKey, "")
+	req.SetBasicAuth(c.SecretKey, "")
 
 	resp, err := http.DefaultClient.Do(req)
 
@@ -82,10 +82,10 @@ func (c Client) update(code string, m Monitor) error {
 	return nil
 }
 
-func (c Client) read(code string) (*Monitor, error) {
+func (c Client) Read(code string) (*Monitor, error) {
 	req, _ := http.NewRequest("GET", apiEndpoint+"/monitors/"+code, nil)
 
-	req.SetBasicAuth(c.secretKey, "")
+	req.SetBasicAuth(c.SecretKey, "")
 
 	resp, err := http.DefaultClient.Do(req)
 
@@ -108,10 +108,10 @@ func (c Client) read(code string) (*Monitor, error) {
 	return &monitor, nil
 }
 
-func (c Client) delete(code string) error {
+func (c Client) Delete(code string) error {
 	req, _ := http.NewRequest("DELETE", apiEndpoint+"/monitors/"+code, nil)
 
-	req.SetBasicAuth(c.secretKey, "")
+	req.SetBasicAuth(c.SecretKey, "")
 
 	resp, err := http.DefaultClient.Do(req)
 

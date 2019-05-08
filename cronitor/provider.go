@@ -20,7 +20,7 @@ func Provider() *schema.Provider {
 }
 
 func providerConfigure(d *schema.ResourceData) (interface{}, error) {
-	client := Client{secretKey: d.Get("api_key").(string)}
+	client := Client{SecretKey: d.Get("api_key").(string)}
 
 	return client, nil
 }
