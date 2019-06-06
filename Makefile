@@ -1,7 +1,8 @@
 .PHONY: build plan
 
 build:
-	go build -o terraform-provider-cronitor
+	GOOS=darwin go build -o bin/terraform-provider-cronitor-darwin
+	GOOS=linux go build -o bin/terraform-provider-cronitor-linux
 
 plan: build
 	terraform init
