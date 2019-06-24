@@ -12,13 +12,7 @@ func resourceMonitor() *schema.Resource {
 		Update: resourceHeartbeatMonitorUpdate,
 		Delete: resourceHeartbeatMonitorDelete,
 		Importer: &schema.ResourceImporter{
-			State: func(d *schema.ResourceData, m interface{}) ([]*schema.ResourceData, error) {
-				if err := resourceHeartbeatMonitorRead(d, m); err != nil {
-					return nil, err
-				}
-
-				return []*schema.ResourceData{d}, nil
-			},
+			State: schema.ImportStatePassthrough,
 		},
 
 		Schema: map[string]*schema.Schema{
