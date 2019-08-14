@@ -1,0 +1,14 @@
+name: Lint
+on: [push, pull_request]
+
+jobs:
+  golangci-lint:
+    name: golangci-lint
+    container: golangci/golangci-lint:latest
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Install deps
+      run: go mod download
+    - name: Run golangci-lint
+      run: golangci-lint run
