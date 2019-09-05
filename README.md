@@ -1,6 +1,6 @@
 # Terraform Provider for Cronitor
 
-[![Build Status](https://wdp9fww0r9.execute-api.us-west-2.amazonaws.com/production/badge/nauxliu/terraform-provider-cronitor)](https://wdp9fww0r9.execute-api.us-west-2.amazonaws.com/production/results/nauxliu/terraform-provider-cronitor) 
+[![Build Status](https://github.com/nauxliu/terraform-provider-cronitor/workflows/Lint/badge.svg)](https://github.com/nauxliu/terraform-provider-cronitor/actions) 
 [![LICENSE](https://img.shields.io/github/license/nauxliu/terraform-provider-cronitor)](https://github.com/nauxliu/terraform-provider-cronitor/blob/master/LICENSE) 
 
 Allows you to manage cronitor monitors.
