@@ -130,6 +130,11 @@ func resourceMonitor() *schema.Resource {
 				Optional: true,
 				Default:  "",
 			},
+			"timezone": &schema.Schema{
+				Type:     schema.TypeString,
+				Optional: true,
+				Default:  "UTC",
+			},
 		},
 	}
 }
@@ -174,6 +179,10 @@ func resourceHeartbeatMonitorRead(d *schema.ResourceData, m interface{}) error {
 	}
 
 	if err = d.Set("note", monitor.Note); err != nil {
+		return err
+	}
+
+	if err = d.Set("timezone", monitor.Note); err != nil {
 		return err
 	}
 

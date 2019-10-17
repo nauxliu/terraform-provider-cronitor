@@ -12,6 +12,7 @@ type Monitor struct {
 	Notifications Notifications `json:"notifications"`
 	Rules         []Rule        `json:"rules"`
 	Note          string        `json:"note"`
+	Timezone      string        `json:"timezone"`
 }
 
 type Notifications struct {
@@ -47,6 +48,10 @@ func (this Monitor) createFromResourceData(d *schema.ResourceData) (Monitor, err
 
 	if attr, ok := d.GetOk("note"); ok {
 		monitor.Note = attr.(string)
+	}
+
+	if attr, ok := d.GetOk("timezone"); ok {
+		monitor.Timezone = attr.(string)
 	}
 
 	if attr, ok := d.GetOk("tags"); ok {
