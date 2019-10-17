@@ -7,8 +7,8 @@ jobs:
     container: golangci/golangci-lint:latest
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: Install deps
-      run: go mod download
-    - name: Run golangci-lint
-      run: golangci-lint run
+      - uses: actions/checkout@master
+      - name: Install deps
+        run: go mod download
+      - name: Run golangci-lint
+        run: golangci-lint run
