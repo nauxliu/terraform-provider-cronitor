@@ -60,7 +60,7 @@ The following arguments are supported:
 * `notifications` - (Required) where/how you wish to be contacted when a monitor's alerting is triggered. The following key/value pairs are all options, at least one of which must not be empty. Note: When extending notification template(s), passing an empty array will overload the templated notification settings for that key. 
   * `templates` (Optional) - ordered list of templates (by key) to extend from. Merged from left-to-right, and then with any monitor-specific template settings defined here.
   * `emails` (Optional) - list of emails to send alerts to
-  slack (Array) - list of slack webhook URLs (found on account settings page)
+  * `slack` (Array) - list of slack webhook URLs (found on account settings page)
   * `pagerduty` (Optional) - list of pagerduty keys (found on account settings page)
   * `phones` (Optional) - list of phone numbers to send SMS alerts to
   * `webhooks` (Optional) - list of URLs (prefixed with http:// or https://) to callback to 
