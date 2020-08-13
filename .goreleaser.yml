@@ -1,6 +1,8 @@
 checksum:
   name_template: "{{ .ProjectName }}_{{ .Version }}_SHA256SUMS"
   algorithm: sha256
+archives:
+  - format: zip
 signs:
   - artifacts: checksum
     signature: "${artifact}.sig"
