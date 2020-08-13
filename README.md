@@ -5,6 +5,21 @@
 
 Allows you to manage cronitor monitors.
 
+## How to use this provider
+
+To install this provider, copy and paste this code into your Terraform configuration. Then, run `terraform init`.
+
+```
+terraform {
+  required_providers {
+    cronitor = {
+      source = "nauxliu/cronitor"
+      version = "1.0.3"
+    }
+  }
+}
+```
+
 ## Provider configuration
 
 The following arguments are supported in the provider block:
