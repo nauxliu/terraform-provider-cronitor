@@ -181,7 +181,7 @@ func resourceHeartbeatMonitorRead(d *schema.ResourceData, m interface{}) error {
 		return err
 	}
 
-	if err = d.Set("timezone", monitor.Note); err != nil {
+	if err = d.Set("timezone", monitor.Timezone); err != nil {
 		return err
 	}
 
