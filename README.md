@@ -99,7 +99,7 @@ The following arguments are supported:
   * `grace_seconds` (Optional)  - Specify a grace period for evaluation of this rule. For not_on_schedule rules, this is used when evaluating start time and total runtime duration.
 * `tags` (Optional) - A list of tags. Each tag must be a string <= 50 chars.
 * `note` (Optional) - a note that you would like to have included in alerts. It's useful if you need to include context/tips for anyone receiving these alerts. Note that due to the size limits on SMS messages it will not be included in those alerts.
-* `timezone` (Optional) - Timezone default to 'UTC'
+* `timezone` (Optional) - Timezone default to the "Default timezone" set in your profile
 
 ### Import
 
