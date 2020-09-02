@@ -132,7 +132,8 @@ func resourceMonitor() *schema.Resource {
 			},
 			"timezone": &schema.Schema{
 				Type:     schema.TypeString,
-				Computed: true,
+				Optional: true,
+				Default: "UTC",
 			},
 		},
 	}
