@@ -12,3 +12,7 @@ jobs:
         run: go mod download
       - name: Run golangci-lint
         run: golangci-lint run
+      - name: Test
+        run: make test
+        env:
+          API_KEY: ${secrets.API_KEY}

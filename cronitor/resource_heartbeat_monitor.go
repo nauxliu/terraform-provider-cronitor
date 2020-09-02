@@ -131,8 +131,11 @@ func resourceMonitor() *schema.Resource {
 				Default:  "",
 			},
 			"timezone": &schema.Schema{
-				Type:     schema.TypeString,
-				Computed: true,
+				Type: schema.TypeString,
+				Optional: true,
+				DefaultFunc: func() (interface{}, error) {
+					return DefaultTimeZone, nil
+				},
 			},
 		},
 	}
