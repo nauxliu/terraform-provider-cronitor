@@ -12,7 +12,7 @@ require (
 	github.com/hashicorp/yamux v0.0.0-20190923154419-df201c70410d // indirect
 	github.com/json-iterator/go v1.1.7
 	github.com/jstemmer/go-junit-report v0.9.1 // indirect
-	github.com/ulikunitz/xz v0.5.6 // indirect
+	github.com/ulikunitz/xz v0.5.8 // indirect
 	github.com/vmihailenco/msgpack v4.0.4+incompatible // indirect
 	go.opencensus.io v0.22.1 // indirect
 	golang.org/x/exp v0.0.0-20191014171548-69215a2ee97e // indirect
